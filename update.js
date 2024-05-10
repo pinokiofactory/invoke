@@ -13,7 +13,7 @@ module.exports = {
   }, {
     method: "script.start",
     params: {
-      uri: "install.json"
+      uri: "install.js"
     }
   }]
 }
