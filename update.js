@@ -4,5 +4,16 @@ module.exports = {
     params: {
       message: "git pull"
     }
+  }, {
+    method: "shell.run",
+    params: {
+      message: "git pull",
+      path: "app"
+    }
+  }, {
+    method: "script.start",
+    params: {
+      uri: "install.json"
+    }
   }]
 }

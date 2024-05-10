@@ -1,39 +1,44 @@
 module.exports = {
-  run: [
-    // Delete this step if your project does not use torch
-    {
-      method: "script.start",
-      params: {
-        uri: "torch.js",
-        params: {
-          venv: "env",                // Edit this to customize the venv folder path
-          // xformers: true   // uncomment this line if your project requires xformers
-        }
-      }
+  cmds: {
+    win32: {
+      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121",
+      amd: "pip install torch-directml",
+      cpu: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cpu"
     },
-    // Edit this step with your custom install commands
-    {
-      method: "shell.run",
-      params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        message: [
-          "pip install -r requirements.txt"
-        ],
-      }
+    linux: {
+      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121",
+      amd: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2",
+      cpu: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cpu"
     },
-    //  Uncomment this step to add automatic venv deduplication (Experimental)
-    //  {
-    //    method: "fs.link",
-    //    params: {
-    //      venv: "env"
-    //    }
-    //  },
-    {
-      method: "notify",
-      params: {
-        html: "Click the 'start' tab to get started!"
+    darwin: "pip install InvokeAI --upgrade --use-pep517"
+  },
+  run: [{
+    method: "shell.run",
+    params: {
+      venv: "env",
+      path: "app",
+      message: [
+        "{{(platform === 'darwin' ? self.cmds.darwin : (['nvidia', 'amd'].includes(gpu) ? self.cmds[platform][gpu] : self.cmds[platform].cpu))}}",
+        "invokeai-configure --yes --root ."
+      ]
+    }
+  }, {
+    method: "fs.link",
+    params: {
+      drive: {
+        models: "app/models",
+        databases: "app/databases",
+        autoimport: "app/autoimport",
+        outputs: "app/outputs",
+        nodes: "app/nodes",
+        text-inversion-output: "app/text-inversion-output",
+        text-inversion-training-data: "app/text-inversion-training-data"
       }
     }
-  ]
+  }, {
+    method: "notify",
+    params: {
+      html: "App launched. Click 'start' to get started"
+    }
+  }]
 }
-

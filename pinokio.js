@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   version: "1.5",
   title: "Invoke",
-  description: "",
+  description: "The Gen AI Platform for Pro Studios https://github.com/invoke-ai/InvokeAI",
   icon: "icon.png",
   menu: async (kernel) => {
     let installing = await kernel.running(__dirname, "install.js")
