@@ -26,13 +26,13 @@ module.exports = {
     method: "fs.link",
     params: {
       drive: {
-        models: "app/models",
-        databases: "app/databases",
-        autoimport: "app/autoimport",
-        outputs: "app/outputs",
-        nodes: "app/nodes",
-        text-inversion-output: "app/text-inversion-output",
-        text-inversion-training-data: "app/text-inversion-training-data"
+        "models": "app/models",
+        "databases": "app/databases",
+        "autoimport": "app/autoimport",
+        "outputs": "app/outputs",
+        "nodes": "app/nodes",
+        "text-inversion-output": "app/text-inversion-output",
+        "text-inversion-training-data": "app/text-inversion-training-data"
       }
     }
   }, {
