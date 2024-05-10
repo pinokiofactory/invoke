@@ -19,7 +19,6 @@ module.exports = {
       path: "app",
       message: [
         "{{(platform === 'darwin' ? self.cmds.darwin : (['nvidia', 'amd'].includes(gpu) ? self.cmds[platform][gpu] : self.cmds[platform].cpu))}}",
-        "invokeai-configure --yes --root ."
       ]
     }
   }, {
