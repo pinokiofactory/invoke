@@ -1,13 +1,13 @@
 module.exports = {
   cmds: {
     win32: {
-      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121",
+      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu124",
       amd: "pip install torch-directml",
       cpu: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cpu"
     },
     linux: {
-      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121",
-      amd: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/rocm5.4.2",
+      nvidia: "pip install \"InvokeAI[xformers]\" --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu124",
+      amd: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/rocm6.1",
       cpu: "pip install InvokeAI --upgrade --use-pep517 --extra-index-url https://download.pytorch.org/whl/cpu"
     },
     darwin: "pip install InvokeAI --upgrade --use-pep517"
