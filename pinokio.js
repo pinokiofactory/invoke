@@ -4,27 +4,37 @@ module.exports = {
   title: "Invoke",
   description: "The Gen AI Platform for Pro Studios https://github.com/invoke-ai/InvokeAI",
   icon: "icon.png",
-  menu: async (kernel) => {
-    let installing = await kernel.running(__dirname, "install.js")
-    let installed = await kernel.exists(__dirname, "app", "env")
-    let running = await kernel.running(__dirname, "start.js")
-    if (installing) {
+  menu: async (kernel, info) => {
+    let installed = info.exists("app/env")
+    let running = {
+      install: info.running("install.js"),
+      start: info.running("start.js"),
+      update: info.running("update.js"),
+      reset: info.running("reset.js")
+    }
+    if (running.install) {
       return [{
         default: true,
         icon: "fa-solid fa-plug",
         text: "Installing",
         href: "install.js",
       }]
+    } else if (running.update) {
+      return [{
+        default: true,
+        icon: 'fa-solid fa-terminal',
+        text: "Updating",
+        href: "update.js",
+      }]
     } else if (installed) {
-      if (running) {
-        let local = kernel.memory.local[path.resolve(__dirname, "start.js")]
+      if (running.start) {
+        let local = info.local("start.js")
         if (local && local.url) {
           return [{
             default: true,
             icon: "fa-solid fa-rocket",
             text: "Open Web UI",
             href: local.url,
-            popout: true,
           }, {
             icon: 'fa-solid fa-terminal',
             text: "Terminal",
@@ -38,6 +48,13 @@ module.exports = {
             href: "start.js",
           }]
         }
+      } else if (running.reset) {
+          return [{
+            default: true,
+            icon: 'fa-solid fa-terminal',
+            text: "Resetting",
+            href: "reset.js",
+          }]
       } else {
         return [{
           default: true,
