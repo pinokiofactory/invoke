@@ -8,8 +8,9 @@ module.exports = {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
-          "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/nightly/cu128 --reinstall",
-          "uv pip install -U bitsandbytes --no-deps"
+          "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu124 --reinstall",
+          "uv pip install -U bitsandbytes --force-reinstall --no-deps",
+          "uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 --force-reinstall --no-deps"
         ]
       },
       "next": null
