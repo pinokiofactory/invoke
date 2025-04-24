@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  version: "3.0",
+  version: "3.7",
   title: "Invoke",
   description: "The Gen AI Platform for Pro Studios https://github.com/invoke-ai/InvokeAI",
   icon: "icon.png",
