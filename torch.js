@@ -17,7 +17,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch-directml torchaudio torchvision numpy==1.26.4"
+        "message": "uv pip install -U torch-directml torchaudio torchvision numpy==1.26.4"
       }
     },
     // windows cpu
@@ -27,7 +27,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
+        "message": "uv pip install -U InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
       }
     },
     // apple mac
@@ -37,7 +37,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
+        "message": "uv pip install -U InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
       }
     },
     // intel mac
@@ -47,7 +47,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
+        "message": "uv pip install -U InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
       }
     },
     // linux nvidia
@@ -57,7 +57,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install \"InvokeAI[xformers]\" --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu124 --reinstall"
+        "message": "uv pip install -U \"InvokeAI[xformers]\" --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu128 --reinstall"
       }
     },
     // linux rocm (amd)
@@ -67,7 +67,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/rocm6.2.4 --reinstall"
+        "message": "uv pip install -U InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/rocm6.2.4 --reinstall"
       }
     },
     // linux cpu
@@ -77,7 +77,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
+        "message": "uv pip install -U InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cpu --reinstall"
       }
     }
   ]
