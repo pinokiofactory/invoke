@@ -1,20 +1,5 @@
 module.exports = {
   run: [
-    // nvidia 50 series
-    {
-      "when": "{{gpu === 'nvidia' && kernel.gpus && kernel.gpus.find(x => / 50.+/.test(x.model))}}",
-      "method": "shell.run",
-      "params": {
-        "venv": "{{args && args.venv ? args.venv : null}}",
-        "path": "{{args && args.path ? args.path : '.'}}",
-        "message": [
-          "uv pip install InvokeAI --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu124 --reinstall",
-          "uv pip install -U bitsandbytes --force-reinstall --no-deps",
-          "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 --force-reinstall --no-deps"
-        ]
-      },
-      "next": null
-    },
     // windows nvidia
     {
       "when": "{{platform === 'win32' && gpu === 'nvidia'}}",
@@ -22,7 +7,7 @@ module.exports = {
       "params": {
         "venv": "{{args && args.venv ? args.venv : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install \"InvokeAI[xformers]\" --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu124 --reinstall"
+        "message": "uv pip install -U \"InvokeAI[xformers]\" --python 3.12 --python-preference only-managed --index=https://download.pytorch.org/whl/cu128 --reinstall"
       }
     },
     // windows amd
