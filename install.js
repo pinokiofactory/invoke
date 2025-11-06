@@ -3,6 +3,9 @@ module.exports = {
     method: "shell.run",
     params: {
       path: "app",
+        env: {
+          UV_VENV_CLEAR: "1"
+        },
       message: [
         "uv venv --relocatable --prompt invoke --python 3.12 --python-preference only-managed env",
       ]
